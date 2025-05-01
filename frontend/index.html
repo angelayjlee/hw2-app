@@ -1,13 +1,226 @@
-<!doctype html>
+
+<!doctype HTML>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte + TS</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+<title>The New York Times - Breaking News, US News, World News and Videos</title>
+<link rel="stylesheet" type="text/css" href="app.css">
+
+
+<style>
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0; 
+  width: 100%;
+  box-sizing: border-box; /
+}
+
+/*----Centered Title header---*/
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.logo img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: center;
+  max-width: 90vw;
+  width: 300px; 
+  height: auto;
+  padding: 20px;
+}
+
+.item1 {
+  grid-area: header;
+  padding: 30px;; 
+  text-align: left;
+  color: #ffffff;
+  position: absolute; 
+  left:20px; 
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.item1 .todays-date{
+  position: left;
+  top: 10px; 
+  left: 10px; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 520;
+  color: #000000; 
+  margin: 0;
+}
+
+.item1 .todays-paper {
+  position: left;
+  top: 25px; 
+  left: 10px; 
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px; 
+  color: #000000; 
+  margin: 0;
+}
+
+/*----3 column content body---*/
+
+.grid-container {
+  display: grid;
+  gap: 0px;
+  grid-template-columns: repeat(3, 1fr); 
+  background-color: white;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-family: Georgia;
+  width: 100%;
+  border-top: 1px solid #ccc;  /* Top border for the grid */
+  border-left: 1px solid #ccc;
+
+}
+
+
+.left-column {
+  background-color: #ffffff;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc; /* Right border for each column */
+  text-align: left;
+  position: relative;
+
+}
+
+
+
+/* desktop view */
+@media (max-width: 1025px) {
+  .item1 {
+    display: block;
+  }
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+  }
+
+  .right-column {
+  border-right: none; 
+  }
+  
+}
+
+/* tablet view */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .item1 {
+    display: none;
+  }
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); 
+    border-left: 1px solid #ccc; 
+    border-right: 1px solid #ccc; 
+  }
+
+  .column {
+    border-right: 1px solid #ccc; 
+  }
+
+  .column:nth-child(2n) {
+    border-right: none; 
+  }
+
+}
+
+/* mobile view */
+@media (max-width: 767px) {
+  .item1 {
+    display: none;
+  }
+  .grid-container {
+    grid-template-columns: 1fr; /* 1 column for mobile */
+  }
+}
+
+/*---- Footer---*/
+.footer {
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+</style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The New York Times - Breaking News, US News, World News and Videos</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+
+<body style="padding-top: 1px; overflow: unset;">
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  
+  </div>  
+
+    <div class="header-container">
+      <div class="item1">
+        <div class="todays-date">Wednesday, April 16, 2025</div>
+        <div class="todays-paper">Today's Paper</div>
+      </div>
+
+      <div class="spacer"> </div> 
+
+      <div class="logo">
+        <img src="/frontend/src/assets/NYTlogo.png" alt="New York Times" width="300" height="300">
+      </div>
+    </div>    
+      
+
+    <div class="grid-container">
+      <div class="left-column">
+        <img src="/frontend/src/assets/matcha.jpg" alt="Matcha" class="responsive-img" style="width:100px; height:auto;">
+        <h3>Headline 1</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+      </div>
+      <div class="middle-column">
+        <h3>Headline 2</h3>
+        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque.</p>    
+      </div>
+
+      <div class="right-column">
+        <h3>Headline 3</h3>
+        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Cras ultricies ligula sed magna dictum porta.</p>
+      </div>
+
+      <!-- Second row -->
+      <div class="column" id="item-4">
+        <h3>Headline 4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+      </div>
+      <div class="column" id="item-5">
+        <h3>Headline 5</h3>
+        <p>Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+      </div>
+      <div class="column" id="item-6">
+        <h3>Headline 6</h3>
+        <p>Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+      </div>
+    </div>
+
+    <!-- Dark Horizontal Line Footer -->
+    <div class="footer"></div>
+
+    
+
+
+
+</body>
 </html>
+

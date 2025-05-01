@@ -1,8 +1,5 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import svelteLogo from './assets/svelte.svg';
-  import viteLogo from '/vite.svg';
-  import Counter from './lib/Counter.svelte';
 
   let apiKey: string = '';
 
@@ -11,6 +8,8 @@
       const res = await fetch('/api/key');
       const data = await res.json();
       apiKey = data.apiKey;
+      let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=${apiKey}`;
+
     } catch (error) {
       console.error('Failed to fetch API key:', error);
     }
@@ -18,47 +17,62 @@
 </script>
 
 <main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
 
-  <div class="card">
-    <Counter />
-  </div>
 
-  <p>
-    Your API Key: <strong>{apiKey}</strong>
-  </p>
+   <!-- Add HTML here -->
+<!-- 
+    <div class="header-container">
+      <div class="item1">
+        <div class="todays-date">Wednesday, April 16, 2025</div>
+        <div class="todays-paper">Today's Paper</div>
+      </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+      <div class="spacer"> </div> 
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+      <div class="logo">
+        <img src="NYTlogo.png" alt="New York Times" width="300" height="300">
+      </div>
+    </div>    
+      
+
+    <div class="grid-container">
+      <div class="column" id="item-1">
+        <img src="matcha.jpg" alt="Matcha" class="responsive-img" style="width:100px; height:auto;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi.</p>
+      </div>
+      <div class="column" id="item-2">
+        <h3>Headline 2</h3>
+        <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec velit neque.</p>    
+      </div>
+
+      <div class="column" id="item-3">
+        <h3>Headline 3</h3>
+        <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Cras ultricies ligula sed magna dictum porta.</p>
+      </div>
+
+      // //Second row  
+      <div class="column" id="item-4">
+        <h3>Headline 4</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+      </div>
+      <div class="column" id="item-5">
+        <h3>Headline 5</h3>
+        <p>Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</p>
+      </div>
+      <div class="column" id="item-6">
+        <h3>Headline 6</h3>
+        <p>Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
+      </div>
+    </div>
+
+    // Dark Horizontal Line Footer 
+    <div class="footer"></div>
+ -->
+
+
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+
+  
 </style>
